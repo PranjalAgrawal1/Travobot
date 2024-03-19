@@ -6,10 +6,17 @@
     <title>TravoBot - Coming Soon</title>
     <script src="https://kit.fontawesome.com/11acbf9ca7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LePeJ4pAAAAACOBPamk66oeX9L4-oRpb1VRovaw"></script>
 
 </head>
 <body>
     <div>
+        <button class="g-recaptcha" 
+        data-sitekey="6LePeJ4pAAAAACOBPamk66oeX9L4-oRpb1VRovaw" 
+        data-callback='onSubmit' 
+        data-action='submit'>Submit</button>
+
         <div class="container">
             <h1>Coming Soon</h1>
             <p>Prepare to takeoff! Our website is coming soon to help you book your next flight.</p>
@@ -19,4 +26,19 @@
         </div>
     </div>
 </body>
+<script>
+    function onClick(e) {
+      e.preventDefault();
+      grecaptcha.ready(function() {
+        grecaptcha.execute('6LePeJ4pAAAAACOBPamk66oeX9L4-oRpb1VRovaw', {action: 'submit'}).then(function(token) {
+            console.log(token)
+        });
+      });
+    }
+</script>
+<script>
+    function onSubmit(token) {
+      document.getElementById("demo-form").submit();
+    }
+  </script>
 </html>
